@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6051499531677717" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stablecoins: How They Actually Maintain Their Peg | ChainClear</title>
+<meta name="description" content="Fiat-backed, crypto-backed, and algorithmic stablecoins compared — the actual mechanics that keep (or fail to keep) a stablecoin at its peg.">
+<link rel="canonical" href="https://kelvorixai.github.io/chainclear/articles/stablecoins-how-they-maintain-their-peg.html">
+<meta property="og:title" content="Stablecoins: How They Actually Maintain Their Peg">
+<meta property="og:description" content="The real mechanics behind fiat-backed, crypto-backed, and algorithmic stablecoins.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kelvorixai.github.io/chainclear/articles/stablecoins-how-they-maintain-their-peg.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.figure{margin:30px 0 36px;padding:24px;background:var(--paper-raised);border:1px solid var(--line);border-radius:4px;}
+.figure svg{display:block;width:100%;height:auto;max-height:200px;}
+.figure figcaption{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);text-align:center;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">ChainClear</a>
+    <nav class="site">
+      <a href="../index.html">Guides</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="post">
+    <header class="meta">
+      <span class="tag">The Mechanics</span>
+      <h1>Stablecoins: how they actually maintain their peg</h1>
+      <p class="dek">"Stable" describes a goal, not a guarantee. Three different mechanisms are used to chase that goal, and they fail in very different ways when they fail.</p>
+    </header>
+
+    <div class="content">
+      <p>A stablecoin aims to hold a steady value, usually pegged 1:1 to a currency like the US dollar. How that peg is actually maintained varies enormously by design, and that design is the single most important thing to understand about any stablecoin — it determines what could cause it to lose its peg.</p>
+
+      <figure class="figure">
+        <svg viewBox="0 0 420 170" role="img" aria-label="Illustration of three stablecoin mechanisms: fiat-backed, crypto-backed, and algorithmic">
+          <rect x="30" y="55" width="110" height="70" rx="4" style="fill:none;stroke:var(--amber)" stroke-width="2.5"/>
+          <text x="85" y="85" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" style="fill:var(--ink-soft)">FIAT-BACKED</text>
+          <text x="85" y="98" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" style="fill:var(--ink-soft)">reserves held</text>
+          <rect x="155" y="55" width="110" height="70" rx="4" style="fill:none;stroke:var(--indigo)" stroke-width="2.5"/>
+          <text x="210" y="85" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" style="fill:var(--ink-soft)">CRYPTO-BACKED</text>
+          <text x="210" y="98" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" style="fill:var(--ink-soft)">overcollateralized</text>
+          <rect x="280" y="55" width="110" height="70" rx="4" style="fill:none;stroke:var(--amber-strong)" stroke-width="2.5" stroke-dasharray="5,3"/>
+          <text x="335" y="85" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" style="fill:var(--ink-soft)">ALGORITHMIC</text>
+          <text x="335" y="98" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7.5" style="fill:var(--ink-soft)">incentive-based</text>
+          <text x="20" y="150" font-family="IBM Plex Mono, monospace" font-size="8.5" style="fill:var(--ink-soft)" letter-spacing=".3">SAME GOAL, THREE DIFFERENT FAILURE MODES</text>
+        </svg>
+        <figcaption>Each mechanism keeps the peg differently — and breaks differently</figcaption>
+      </figure>
+
+      <h2>Fiat-backed stablecoins</h2>
+      <p>The issuer holds reserves (cash, short-term government debt, and similar assets) roughly equal to the number of coins in circulation, and in principle allows redeeming coins for the underlying currency. The peg mechanism here is essentially trust plus redemption: as long as holders believe the reserves exist and redemption works, the coin trades near its peg. The main risks are reserve quality and transparency (are the reserves what's claimed, and audited) and redemption access (can holders actually redeem, and how fast).</p>
+
+      <h2>Crypto-backed stablecoins</h2>
+      <p>Backed by other cryptocurrencies locked in a smart contract, typically over-collateralized (for example, $150 of crypto collateral backing $100 of stablecoin) to absorb price swings in the collateral itself. If collateral value falls too far, the system automatically liquidates positions to protect the peg. This removes reliance on a centralized reserve holder but introduces smart-contract risk and the possibility of rapid, cascading liquidations during sharp market drops.</p>
+
+      <h2>Algorithmic stablecoins</h2>
+      <p>Attempt to maintain the peg through incentives and supply adjustments rather than holding collateral directly — for example, allowing arbitrage between the stablecoin and a related token so that market participants are financially motivated to push the price back toward the peg. This design has historically been the least resilient under stress: several prominent algorithmic stablecoins have lost their peg entirely when the incentive mechanism failed to hold under heavy selling.</p>
+
+      <h2>Comparing the mechanisms</h2>
+      <table>
+        <thead><tr><th>Type</th><th>Peg mechanism</th><th>Main risk</th></tr></thead>
+        <tbody>
+          <tr><td>Fiat-backed</td><td>Reserves + redemption</td><td>Reserve quality, redemption access</td></tr>
+          <tr><td>Crypto-backed</td><td>Over-collateralization + liquidation</td><td>Collateral crashes, smart-contract risk</td></tr>
+          <tr><td>Algorithmic</td><td>Incentives + supply adjustment</td><td>Incentive failure under stress</td></tr>
+        </tbody>
+      </table>
+
+      <h2>The actual question worth asking</h2>
+      <p>Not "is this stablecoin safe" as a yes/no, but "what specifically backs this peg, and what would have to go wrong for it to break." That question has a different answer for each of the three mechanisms above, and the answer is usually published in the project's own documentation, transparency reports, or audits.</p>
+
+      <div class="disclaimer">Educational content only — not financial or investment advice. Stablecoin mechanisms and risk profiles vary by issuer and change over time; this explains general mechanics and is not a recommendation regarding any specific stablecoin.</div>
+    </div>
+  </article>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>ChainClear</span>
+    <span>Also from Kelvorix AI: <a href="https://kelvorixai.github.io/">RotaWage</a></span>
+    <span><a href="../index.html">More guides</a></span>
+    <span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
+
