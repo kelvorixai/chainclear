@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6051499531677717" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto Exchange Fee Cost Calculator | ChainClear</title>
+<meta name="description" content="Free crypto exchange fee cost calculator. Enter your monthly trading volume, fee rate, and withdrawal habits for an instant estimate of what your exchange actually costs you.">
+<link rel="canonical" href="https://kelvorixai.github.io/chainclear/tools/exchange-fee-cost-calculator.html">
+<meta property="og:title" content="Crypto Exchange Fee Cost Calculator">
+<meta property="og:description" content="Enter your trading volume, fee rate, and withdrawal habits to see your real monthly exchange cost.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .calc{ border:1px solid var(--line); padding:28px 26px; margin-top:28px; background:var(--paper-raised); }
+  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:20px; }
+  .field label{ font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); font-weight:500; }
+  .field input{
+    font: inherit; font-size:16px; padding:11px 12px; border:1px solid var(--line);
+    background:var(--paper); color:var(--ink); border-radius:2px; width:100%;
+  }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:480px){ .field-row{ grid-template-columns:1fr; } }
+  button.calc-btn{
+    font: inherit; font-size:15px; font-weight:600; background:var(--indigo-soft); color:var(--paper);
+    border:none; padding:13px 22px; border-radius:2px; cursor:pointer; width:100%;
+  }
+  button.calc-btn:hover{ background:var(--indigo); }
+  .result{ margin-top:26px; padding:22px 24px; border:1px solid var(--amber); border-left:4px solid var(--amber); background:var(--paper); display:none; }
+  .result.show{ display:block; }
+  .result .amount{ font-family:"Fraunces", serif; font-size:2.4rem; font-weight:700; color:var(--amber-strong); font-variant-numeric:tabular-nums; }
+  .result .amount span{ font-size:1.1rem; font-family:"IBM Plex Sans", sans-serif; font-weight:500; color:var(--ink-soft); }
+  .result .breakdown{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); font-family:"IBM Plex Mono", monospace; line-height:1.8; }
+  .share-btn{
+    margin-top:16px; font: inherit; font-size:13px; background:none; color:var(--indigo-soft);
+    border:1px solid var(--indigo-soft); padding:8px 14px; border-radius:2px; cursor:pointer;
+  }
+  .share-btn:hover{ background:var(--indigo-soft); color:var(--paper); }
+  .formula-note{ font-size:13px; color:var(--ink-soft); margin-top:10px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">ChainClear</a>
+    <nav class="site">
+      <a href="../index.html">Guides</a>
+      <a href="index.html">Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="post">
+    <header class="meta">
+      <span class="tag">Tool</span>
+      <h1>Crypto exchange fee cost calculator</h1>
+      <p class="dek">Enter your monthly trading volume, taker fee rate, and how often you withdraw to see what your exchange actually costs you each month — the trading fee line plus the withdrawal fee markup most people never add up.</p>
+    </header>
+
+    <div class="calc">
+      <div class="field-row">
+        <div class="field">
+          <label for="volume">Monthly trading volume (USD)</label>
+          <input type="number" id="volume" inputmode="decimal" placeholder="e.g. 5000" min="0" step="any">
+        </div>
+        <div class="field">
+          <label for="feerate">Taker fee rate (%)</label>
+          <input type="number" id="feerate" inputmode="decimal" placeholder="e.g. 0.1" min="0" step="any">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="withdrawals">Withdrawals per month</label>
+          <input type="number" id="withdrawals" inputmode="numeric" placeholder="e.g. 2" min="0" step="1">
+        </div>
+        <div class="field">
+          <label for="markup">Withdrawal fee markup (USD, charged minus actual network fee)</label>
+          <input type="number" id="markup" inputmode="decimal" placeholder="e.g. 3" min="0" step="any">
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calcBtn" type="button">Calculate my exchange cost</button>
+
+      <div class="result" id="result">
+        <div class="amount"><span>Monthly cost: </span><span id="amountValue">0</span></div>
+        <div class="breakdown" id="breakdown"></div>
+        <button class="share-btn" id="shareBtn" type="button">Copy result to share</button>
+      </div>
+    </div>
+
+    <div class="content" style="margin-top:36px;">
+      <h2>How this is calculated</h2>
+      <p>This follows the two most concretely computable revenue lines from our <a href="../articles/how-crypto-exchanges-actually-make-money.html">how crypto exchanges actually make money guide</a>:</p>
+      <ul>
+        <li><strong>Trading fees:</strong> your monthly trading volume × your taker fee rate — the visible line on every trade</li>
+        <li><strong>Withdrawal fee markup:</strong> the number of times you withdraw per month × the gap between what the exchange charges you and the actual blockchain network fee it pays</li>
+        <li><strong>Total monthly cost:</strong> trading fees plus withdrawal markup, projected to an annual figure</li>
+      </ul>
+      <p class="formula-note">This doesn't capture every revenue stream an exchange has — the bid-ask spread and any yield it earns on idle balances aren't priced in trade confirmations, so your real cost is likely somewhat higher than this estimate. Educational only, not financial advice.</p>
+    </div>
+  </article>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>ChainClear</span>
+    <span>Also from Kelvorix AI: <a href="https://kelvorixai.github.io/">see all our sites</a></span>
+    <span>Educational content only — not financial or investment advice.</span>
+    <span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var calcBtn = document.getElementById('calcBtn');
+  var shareBtn = document.getElementById('shareBtn');
+  var resultEl = document.getElementById('result');
+  var amountEl = document.getElementById('amountValue');
+  var breakdownEl = document.getElementById('breakdown');
+  var lastSummary = '';
+
+  function fmt(n){
+    return n.toLocaleString('en-US', {maximumFractionDigits: 2});
+  }
+
+  calcBtn.addEventListener('click', function(){
+    var volume = parseFloat(document.getElementById('volume').value) || 0;
+    var feerate = parseFloat(document.getElementById('feerate').value) || 0;
+    var withdrawals = parseFloat(document.getElementById('withdrawals').value) || 0;
+    var markup = parseFloat(document.getElementById('markup').value) || 0;
+
+    if (volume <= 0 && withdrawals <= 0) {
+      breakdownEl.textContent = '';
+      amountEl.textContent = 'Enter your numbers above';
+      resultEl.classList.add('show');
+      shareBtn.style.display = 'none';
+      return;
+    }
+
+    var tradingFees = volume * (feerate / 100);
+    var withdrawalMarkup = withdrawals * markup;
+    var total = tradingFees + withdrawalMarkup;
+    var annual = total * 12;
+
+    var lines = [];
+    lines.push('Trading fees (' + fmt(volume) + ' at ' + feerate + '%): ' + fmt(tradingFees));
+    lines.push('Withdrawal markup (' + withdrawals + ' x ' + fmt(markup) + '): ' + fmt(withdrawalMarkup));
+    lines.push('Total monthly cost: ' + fmt(total));
+    lines.push('Projected annual cost: ' + fmt(annual));
+
+    amountEl.textContent = 'USD ' + fmt(total);
+    breakdownEl.innerHTML = lines.join('<br>');
+    resultEl.classList.add('show');
+    shareBtn.style.display = 'inline-block';
+    lastSummary = 'My crypto exchange is actually costing me about USD ' + fmt(total) + '/month between trading fees and withdrawal markups. Try it yourself: https://kelvorixai.github.io/chainclear/tools/exchange-fee-cost-calculator.html';
+  });
+
+  shareBtn.addEventListener('click', function(){
+    if (!lastSummary) return;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(lastSummary).then(function(){
+        shareBtn.textContent = 'Copied!';
+        setTimeout(function(){ shareBtn.textContent = 'Copy result to share'; }, 1800);
+      });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
+
