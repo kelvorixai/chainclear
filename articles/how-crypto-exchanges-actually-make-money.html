@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6051499531677717" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Crypto Exchanges Actually Make Money | ChainClear</title>
+<meta name="description" content="Trading fees, spreads, listing fees, and staking cuts — the actual revenue mechanics behind crypto exchanges, explained without hype or advice.">
+<link rel="canonical" href="https://kelvorixai.github.io/chainclear/articles/how-crypto-exchanges-actually-make-money.html">
+<meta property="og:title" content="How Crypto Exchanges Actually Make Money">
+<meta property="og:description" content="The real revenue mechanics behind crypto exchanges — fees, spreads, listings, and more.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kelvorixai.github.io/chainclear/articles/how-crypto-exchanges-actually-make-money.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.figure{margin:30px 0 36px;padding:24px;background:var(--paper-raised);border:1px solid var(--line);border-radius:4px;}
+.figure svg{display:block;width:100%;height:auto;max-height:200px;}
+.figure figcaption{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);text-align:center;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">ChainClear</a>
+    <nav class="site">
+      <a href="../index.html">Guides</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="post">
+    <header class="meta">
+      <span class="tag">The Mechanics</span>
+      <h1>How crypto exchanges actually make money</h1>
+      <p class="dek">Trading fees are the visible revenue line. The bigger, quieter ones are the bid-ask spread, listing fees, and what the exchange does with customer assets in the background.</p>
+    </header>
+
+    <div class="content">
+      <p>A crypto exchange is, mechanically, a matching engine plus a set of adjacent businesses built around the order book. Understanding where the money actually comes from — not just the headline trading fee — explains a lot about why exchanges push certain products (staking, launchpads, leveraged trading) so hard.</p>
+
+      <figure class="figure">
+        <svg viewBox="0 0 420 170" role="img" aria-label="Illustration of four exchange revenue streams as parallel bars of different heights">
+          <line x1="30" y1="140" x2="400" y2="140" style="stroke:var(--line)" stroke-width="1.5"/>
+          <rect x="50" y="70" width="50" height="70" style="fill:none;stroke:var(--amber)" stroke-width="2.5"/>
+          <text x="75" y="155" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" style="fill:var(--ink-soft)">TRADING</text>
+          <text x="75" y="165" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" style="fill:var(--ink-soft)">FEES</text>
+          <rect x="140" y="90" width="50" height="50" style="fill:none;stroke:var(--indigo)" stroke-width="2.5"/>
+          <text x="165" y="155" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" style="fill:var(--ink-soft)">SPREAD</text>
+          <rect x="230" y="105" width="50" height="35" style="fill:none;stroke:var(--amber-strong)" stroke-width="2.5" stroke-dasharray="4,3"/>
+          <text x="255" y="155" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" style="fill:var(--ink-soft)">LISTINGS</text>
+          <rect x="320" y="55" width="50" height="85" style="fill:none;stroke:var(--indigo-soft)" stroke-width="2.5"/>
+          <text x="345" y="155" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" style="fill:var(--ink-soft)">ASSET</text>
+          <text x="345" y="165" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" style="fill:var(--ink-soft)">USE</text>
+        </svg>
+        <figcaption>Four parallel revenue streams, not just the one shown in the fee schedule</figcaption>
+      </figure>
+
+      <h2>Trading fees: the visible line</h2>
+      <p>Most exchanges charge a "maker" fee (for orders that add liquidity to the book) and a "taker" fee (for orders that remove it), typically a small fraction of a percent per trade, often with taker fees higher than maker fees to incentivize liquidity provision. At high volume, this is the largest and most predictable revenue source for a typical exchange, and it scales directly with trading activity — which is why exchanges are financially motivated to encourage frequent trading.</p>
+
+      <h2>The bid-ask spread</h2>
+      <p>Separate from the stated fee, the gap between the best buy price and best sell price on the order book is itself a cost to traders, and on exchanges that also run market-making operations, that spread can be a direct revenue source. This cost is less visible than a stated fee percentage because it isn't itemized on a receipt — it's baked into the execution price.</p>
+
+      <h2>Listing fees and launchpads</h2>
+      <p>New token projects commonly pay exchanges to be listed — a mechanism that gives the project trading volume and visibility, and gives the exchange a fee plus, often, an allocation of the token itself. "Launchpad" programs that let users buy new tokens early typically work similarly: the exchange earns a fee or allocation for providing distribution.</p>
+
+      <h2>What happens to idle customer assets</h2>
+      <p>Assets sitting in exchange custody aren't always simply held — some exchanges lend them out, use them in market-making, or otherwise deploy them, generating a return the exchange keeps (sometimes sharing a portion via a "yield" or "earn" product). This is also the mechanism behind several well-publicized exchange collapses, where customer assets used this way weren't fully available when withdrawals surged — a mechanics point worth understanding, not a comment on any specific current platform.</p>
+
+      <h2>Revenue streams at a glance</h2>
+      <table>
+        <thead><tr><th>Stream</th><th>Mechanic</th></tr></thead>
+        <tbody>
+          <tr><td>Trading fees</td><td>Small % per trade, maker/taker split</td></tr>
+          <tr><td>Bid-ask spread</td><td>Gap between buy/sell price, less visible than stated fees</td></tr>
+          <tr><td>Listing/launchpad fees</td><td>Projects pay for exchange access and distribution</td></tr>
+          <tr><td>Asset deployment</td><td>Lending or using custodied assets for a return</td></tr>
+          <tr><td>Withdrawal/network fees</td><td>Often marked up above the actual blockchain network fee</td></tr>
+        </tbody>
+      </table>
+
+      <h2>The actual question worth asking</h2>
+      <p>Not "is this exchange's trading fee low" but "how does this exchange make money overall, and does that incentive structure align with mine as a user." An exchange earning heavily from asset deployment has a different risk profile than one earning purely from trading fees — a mechanics distinction, not a recommendation either way.</p>
+
+      <div class="disclaimer">Educational content only — not financial, investment, or trading advice. This explains general exchange mechanics and is not commentary on the safety, reliability, or suitability of any specific platform; do your own research before using any exchange.</div>
+    </div>
+  </article>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>ChainClear</span>
+    <span>Also from Kelvorix AI: <a href="https://kelvorixai.github.io/">RotaWage</a></span>
+    <span><a href="../index.html">More guides</a></span>
+    <span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
+
