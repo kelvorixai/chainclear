@@ -40,7 +40,70 @@
   }
   .share-btn:hover{ background:var(--indigo-soft); color:var(--paper); }
   .formula-note{ font-size:13px; color:var(--ink-soft); margin-top:10px; }
+  .faq{ margin-top:36px; }
+  .faq details{ border:1px solid var(--line); border-radius:2px; padding:14px 16px; margin-bottom:10px; background:var(--paper-raised); }
+  .faq summary{ cursor:pointer; font-weight:600; list-style:none; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; float:right; color:var(--ink-soft); }
+  .faq details[open] summary::after{ content:"\2013"; }
+  .faq p{ margin-top:10px; font-size:14.5px; color:var(--ink-soft); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a withdrawal fee markup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The difference between what an exchange charges you to withdraw crypto and the actual blockchain network fee it pays on your behalf. That gap is pure profit for the exchange, and it's easy to miss because it's buried in a single withdrawal confirmation rather than shown as a fee line."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this calculator capture every cost of using an exchange?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — it covers only the two most concretely computable lines: trading fees and withdrawal fee markup. It doesn't price in the bid-ask spread or any yield the exchange earns on idle balances, so your real cost is likely somewhat higher than this estimate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do trading fees scale with volume instead of being a flat fee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because most exchanges charge a taker fee as a percentage of your traded dollar volume, not a fixed amount per trade — so the more you trade, the more you pay in absolute terms even if your fee rate percentage stays the same."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does frequent withdrawing add up over a year?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — this calculator projects your monthly total to an annual figure, since even a small per-withdrawal markup compounds meaningfully across dozens of withdrawals over a year."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Crypto Exchange Fee Cost Calculator",
+  "url": "https://kelvorixai.github.io/chainclear/tools/exchange-fee-cost-calculator.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Free calculator that estimates what a crypto exchange actually costs from trading fees and withdrawal fee markups, projected to a monthly and annual total."
+}
+</script>
 </head>
 <body>
 
@@ -103,6 +166,26 @@
         <li><strong>Total monthly cost:</strong> trading fees plus withdrawal markup, projected to an annual figure</li>
       </ul>
       <p class="formula-note">This doesn't capture every revenue stream an exchange has — the bid-ask spread and any yield it earns on idle balances aren't priced in trade confirmations, so your real cost is likely somewhat higher than this estimate. Educational only, not financial advice.</p>
+    </div>
+
+    <div class="content faq" style="margin-top:36px;">
+      <h2>Frequently asked questions</h2>
+      <details>
+        <summary>What is a withdrawal fee markup?</summary>
+        <p>The difference between what an exchange charges you to withdraw crypto and the actual blockchain network fee it pays on your behalf. That gap is pure profit for the exchange, and it's easy to miss because it's buried in a single withdrawal confirmation rather than shown as a fee line.</p>
+      </details>
+      <details>
+        <summary>Does this calculator capture every cost of using an exchange?</summary>
+        <p>No — it covers only the two most concretely computable lines: trading fees and withdrawal fee markup. It doesn't price in the bid-ask spread or any yield the exchange earns on idle balances, so your real cost is likely somewhat higher than this estimate.</p>
+      </details>
+      <details>
+        <summary>Why do trading fees scale with volume instead of being a flat fee?</summary>
+        <p>Because most exchanges charge a taker fee as a percentage of your traded dollar volume, not a fixed amount per trade — so the more you trade, the more you pay in absolute terms even if your fee rate percentage stays the same.</p>
+      </details>
+      <details>
+        <summary>Does frequent withdrawing add up over a year?</summary>
+        <p>Yes — this calculator projects your monthly total to an annual figure, since even a small per-withdrawal markup compounds meaningfully across dozens of withdrawals over a year.</p>
+      </details>
     </div>
   </article>
 </main>
@@ -175,4 +258,3 @@
 
 </body>
 </html>
-
